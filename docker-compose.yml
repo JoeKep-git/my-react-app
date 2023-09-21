@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  api:
+    build: ./api
+    container_name: api_backend
+    ports:
+      - '8000:8000'
+    volumes:
+      - ./api:/app
+      - ./app/node_modules
+  client:
+    build: ./client
+    container_name: client_frontend
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./client:/app
+      - ./app/node_modules
+    stdin_open: true
+    tty: true
+  db:
+    env_file:
+      - .env
+    image: "mcr.microsoft.com/mssql/server:2022-latest"
+    ports:
+      - "1433:1433"
+    environment:
+#Uncomment the line below if you want to use a sa password. Please change this to a password of your choosing before proceeding.
+      SA_PASSWORD: ${SA_PASSWORD}
+      ACCEPT_EULA: "Y"
+volumes:
+  mssql-data:
