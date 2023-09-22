@@ -3,6 +3,7 @@ services:
   api:
     build: ./api
     container_name: api_backend
+    image: "my-app-docker-api:latest"
     ports:
       - '8000:8000'
     volumes:
@@ -11,6 +12,7 @@ services:
   client:
     build: ./client
     container_name: client_frontend
+    image: "my-app-docker-client:latest"
     ports:
       - '3000:3000'
     volumes:
