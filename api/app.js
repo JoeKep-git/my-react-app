@@ -13,6 +13,10 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
+app.get('/', (req, res) => {
+  res.send('Home Route');
+});
+
 app.get('/api', (req, res) => {
   res.send('Home Route');
 });

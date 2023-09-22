@@ -5,7 +5,7 @@ import useGetRequest from "./useGetRequest";
 const usePizzas = () => {
     //it can use other hooks. So the code from other js files involving the state and the effect can simply be moved to the custom hook,
     const [pizzas, setPizzas] = useState([]);
-    const {get, loadingState} = useGetRequest("http://localhost:8000/api/pizzas");
+    const {get, loadingState} = useGetRequest("/api/pizzas");
 
     useEffect(() => {
         const fetchPizzas = async () => {
