@@ -34,6 +34,27 @@ const PizzaList = () => {
     //useState is called within the components functions
     //These are the rules for hooks
     const [pizzas, setPizzas] = useState(pizzasArray);
+
+    const [counter, setCounter] = useState(0);
+    //counter here is a primitive type not a reference type
+    //With primitive types, React will compare the previous value to the new value. Only if there is a difference,
+    const buttonClicked = () => setCounter(current => counter + 1);
+    //Current here is the equivalent to the value of counter most of the time. 
+    //But when multiple calls to the set function are done, React batches the calls for efficiency, only updating the state value when the batch completes
+
+    const addPizza = () => {
+        //only use setPizzas not pizzas to update the state
+        setPizzas([
+            ...pizzas,
+            {
+                id: 4,
+                name: "Meat Lovers Pizza",
+                toppings: ["cheese", "pepperoni", "sausage", "bacon"],
+                size: "small",
+                price: 12.99
+            }
+        ]);
+    };
     return (
         <>
             <div className="row mb-2">
@@ -63,6 +84,9 @@ const PizzaList = () => {
                     ))}
                 </tbody>
             </table>
+            <button className="btn btn-primary" onClick={addPizza}>
+                Add
+            </button>
         </>
     );
 };
