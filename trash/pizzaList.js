@@ -1,5 +1,5 @@
 // import styles from "./pizzaList.module.css"
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import PizzaRow from "./pizzaRow";
 
 //temporary array of pizzas
@@ -35,12 +35,27 @@ const PizzaList = () => {
     //These are the rules for hooks
     const [pizzas, setPizzas] = useState(pizzasArray);
 
+    //demo of useEffect
+    // useEffect(() => {
+    //     const fetchPizzas = async () => {
+    //         const response = await fetch("/api/pizzas");
+    //         const pizzas = await response.json();
+    //         setPizzas(pizzas);
+    //     };
+    //     fetchPizzas();
+    // },[]);
+
     const [counter, setCounter] = useState(0);
     //counter here is a primitive type not a reference type
     //With primitive types, React will compare the previous value to the new value. Only if there is a difference,
-    const buttonClicked = () => setCounter(current => counter + 1);
+    const buttonClicked = () => useRef(0);
     //Current here is the equivalent to the value of counter most of the time. 
     //But when multiple calls to the set function are done, React batches the calls for efficiency, only updating the state value when the batch completes
+
+    //useRef is used to keep track of the previous value of the counter
+    useEffect(() => {
+        buttonClicked.current++;
+    });
 
     const addPizza = () => {
         //only use setPizzas not pizzas to update the state

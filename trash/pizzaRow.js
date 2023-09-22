@@ -11,4 +11,7 @@ const PizzaRow = ({pizza}) => {
     )
 };
 
+// const PizzaRowMem = React.memo(PizzaRow);
+
 export default PizzaRow;
+// export {PizzaRowMem}; Performance gain is insignificant due to how small this is
