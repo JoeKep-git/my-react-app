@@ -1,6 +1,13 @@
 import styles from "./banner.module.css"
 
-const Banner = () => {
+//convention here is to call it props
+//props is an object that contains all the properties that are passed to the component
+//props are read-only
+//props are passed from parent to child
+//props are immutable
+//i can also get children from props {children}
+
+const Banner = ({children}) => {
     return (
         <header className="row mb-4">
             <div className="col-5">
@@ -8,7 +15,7 @@ const Banner = () => {
                 className={styles.logo}/>
             </div>
             <div className="col-7 mt-5">
-                Providing Pizzas for the masses since 2023!
+                {children}
             </div>
         </header>
     );
