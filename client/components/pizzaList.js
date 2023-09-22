@@ -29,6 +29,10 @@ const pizzasArray = [
 
 const PizzaList = () => {
     //function is expected to have the set prefix
+    //call hook at the top level
+    //useState cannot be skipped
+    //useState is called within the components functions
+    //These are the rules for hooks
     const [pizzas, setPizzas] = useState(pizzasArray);
     return (
         <>
