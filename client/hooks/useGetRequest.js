@@ -9,6 +9,7 @@ const useGetRequest = (url) => {
         setLoadingState(loadingStatus.loading);
         try {
             const response = await fetch(url);
+            console.log(response);
             const result = await response.json();
             setLoadingState(loadingStatus.loaded);
             return result;
