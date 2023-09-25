@@ -14,7 +14,6 @@ const usePizzas = () => {
         };
         fetchPizzas();
     }, [get]);
-
     return {pizzas, setPizzas, loadingState};
 };
 

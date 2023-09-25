@@ -2,9 +2,10 @@ import PizzaRow from "./mainPizzaRow";
 import loadingStatus from "@/helpers/loadingStatus";
 import LoadingIndicator from "./loadingIndicator";
 import usePizzas from "@/hooks/usePizzas";
-
+import defaultPhoto from "@/assets/images/defaultPizzaPhoto.jpg"
 const PizzaList = () => {
     const {pizzas, setPizzas, loadingState} = usePizzas();
+    console.log(defaultPhoto);
 
     //conditional rendering
     if(loadingState !== loadingStatus.loaded) {
@@ -17,7 +18,7 @@ const PizzaList = () => {
                 {pizzas.map((pizza) => (
                     <div key={pizza.id} className="col">
                         <div className="card">
-                            <img src={pizza.imageSrc} className="card-img-top" alt={pizza.name} />
+                            <img src={pizza.imageSrc || "http://localhost:8000/api/images/defaultPizzaPhoto.jpg"} className="card-img-top" alt={pizza.name} />
                             <div className="card-body">
                                 <h5 className="card-title">{pizza.name}</h5>
                                 <p className="card-text">Toppings: {pizza.toppings.join(', ')}</p>

@@ -19,7 +19,7 @@ const App = () => {
             <navigationContext.Provider value={nav}>
                 <Banner>
                     <div>
-                        Providing houses all over the world
+                        Providing Pizzas all over the country!
                     </div>
                 </Banner>
                 <ComponentPicker currentNavLocation={nav.current} />

@@ -10,7 +10,7 @@ const Pizza = () => {
             <div className="col-6">
                 <div className="row">
                     <img className="img-fluid"
-                    src={pizza.photo || defaultPhoto} alt="pizza" />
+                    src={pizza.imageSrc || defaultPhoto} alt="pizza" />
                 </div>
             </div>
             <div className="col-6">
