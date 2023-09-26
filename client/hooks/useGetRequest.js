@@ -8,7 +8,7 @@ const useGetRequest = (url) => {
     const get = useCallback(async () => {
         setLoadingState(loadingStatus.loading);
         try {
-            const response = await fetch("http://localhost:8000"+url);
+            const response = await fetch(url);
             const result = await response.json();
             setLoadingState(loadingStatus.loaded);
             return result;
