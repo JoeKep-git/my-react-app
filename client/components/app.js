@@ -6,6 +6,7 @@ import { useState } from "react";
 import ComponentPicker from "./componentPicker";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { useLocation } from "react-router-dom";
+import GlobalState from "./basket";
 
 const navigationContext = React.createContext(navValues.home, navValues.pizza, navValues.sides, navValues.drinks);
 
@@ -15,16 +16,19 @@ const App = () => {
         (navTo, param) => setNav({current: navTo, param, navigate}),
         []
     );
+
     const [nav, setNav] = useState({current: navValues.pizza, navigate});
     return (
         <>
             <navigationContext.Provider value={nav}>
+                <GlobalState>
                 <Banner>
                     <div>
                             Providing Pizzas all over the country!
                     </div>
                 </Banner>
                 <ComponentPicker currentNavLocation={nav.current} />
+                </GlobalState>
             </navigationContext.Provider>
         </>
     );

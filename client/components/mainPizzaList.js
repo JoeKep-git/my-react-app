@@ -3,14 +3,20 @@ import loadingStatus from "@/helpers/loadingStatus";
 import LoadingIndicator from "./loadingIndicator";
 import usePizzas from "@/hooks/usePizzas";
 import currencyFormatter from "@/helpers/currencyFormatter";
+import postPizza from "@/hooks/usePostPizza";
 
 const PizzaList = () => {
     const {pizzas, setPizzas, loadingState} = usePizzas();
+
 
     //conditional rendering
     if(loadingState !== loadingStatus.loaded) {
         return <LoadingIndicator loadingState={loadingState} />;
     }
+
+    const handleAddToCart = async (pizza) => {
+        const response = await postPizza(pizza);
+    };
 
     return (
         <>
@@ -30,6 +36,8 @@ const PizzaList = () => {
                                     <option value="medium">Medium</option>
                                     <option value="large">Large</option>
                                 </select>
+                                <br/>
+                                <button className="btn btn-primary" onClick={() => handleAddToCart(pizza)}>Add to Cart</button>
                             </div>
                         </div>
                     </div> 

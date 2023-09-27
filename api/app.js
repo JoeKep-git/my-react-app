@@ -8,6 +8,8 @@ const defaultSidePhoto = './images/sides/garlicBread.jpg';
 const fs = require('fs');
 const sql = require('mssql');
 const env = require('dotenv').config();
+const session = require('express-session');
+const bodyParser = require('body-parser');
 
 // Define the directory where side images are stored
 const sidesImageDir = './images/sides/';
@@ -30,6 +32,15 @@ const corsOptions = {
   origin: 'http://localhost:3000',
   optionsSuccessStatus: 200,
 }; 
+
+//middleware
+app.use(session({
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: true,
+}));
+
+app.use(bodyParser.json());
 
 app.use(cors(corsOptions));
 
@@ -100,6 +111,21 @@ app.get("/api/sides", async (req, res) => {
   }
 });
 
+//post methods that will save the order to the session
+app.post("/api/pizzas", async (req, res) => {
+  try {
+    console.log("This is the api/pizzas post request")
+    console.log(req.body);
+    const item = req.body;
+    req.session.cart = req.session.cart || [];
+    req.session.cart.push(item);
+    res.status(204);
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Internal Server Error");
+  }
+});
 
 /******************Start of Pizzas***************************** */
 
