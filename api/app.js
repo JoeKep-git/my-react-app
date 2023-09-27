@@ -6,9 +6,22 @@ const cors = require('cors');
 const defaultPhoto = './images/defaultPizzaPhoto.jpg';
 const defaultSidePhoto = './images/sides/garlicBread.jpg';
 const fs = require('fs');
+const sql = require('mssql');
+const env = require('dotenv').config();
 
 // Define the directory where side images are stored
 const sidesImageDir = './images/sides/';
+
+const sqlConfig = {
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  server: process.env.DB_SERVER,
+  database: process.env.DB_NAME,
+  options: {
+    enableArithAbort: true,
+    encrypt: true
+  }
+};
 
 const corsOptions = {
   origin: 'http://localhost:3000',
