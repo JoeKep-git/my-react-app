@@ -19,9 +19,9 @@ const SidesList = () => {
                 {sides.map((side) => (
                     <div key={side.id} className="col">
                         <div className="card">
-                            <img src={side.imageSrc || "http://localhost:8000/api/images/sides/garlicBread.jpg"} className="card-img-top"/>
+                            <img src={"/images/sides/"+side.pictureName || "http://localhost:8000/api/images/sides/garlicBread.jpg"} className="card-img-top"/>
                             <div className="card-body">
-                                <h5 className="card-title">{side.name}</h5>
+                                <h5 className="card-title">{side.sideName}</h5>
                                 <p className="card-text">{currencyFormatter.format(side.price)}</p>
                             </div>
                         </div>

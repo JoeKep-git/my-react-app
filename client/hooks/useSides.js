@@ -14,7 +14,6 @@ const useSides = () => {
         };
         fetchSides();
     }, [get]);
-    console.log(sides)
     return {sides, setSides, loadingState};
 };
 

@@ -12,6 +12,7 @@ const env = require('dotenv').config();
 // Define the directory where side images are stored
 const sidesImageDir = './images/sides/';
 
+//sql configuration using .env file
 const sqlConfig = {
   user: process.env.DB_USER,
   password: process.env.DB_PASS,
@@ -24,32 +25,6 @@ const sqlConfig = {
     trustedConnection: true,
   }
 };
-
-const getDrinks = async () => {
-  try {
-    await sql.connect(sqlConfig);
-    const query = await sql.query("SELECT * FROM drinks");
-    // console.dir(JSON.stringify(query.recordset.length));
-    return query.recordset;
-  }
-  catch (err) {
-    console.log(err);
-  } finally {
-    await sql.close();
-  }
-}
-
-app.get('/api/beverages', async (req, res) => {
-  try {
-    const drinks = await getDrinks();
-    console.log("im being called");
-    console.log(JSON.stringify(drinks));
-    res.send(JSON.stringify(drinks));
-  } catch (err) {
-    console.log(err);
-    res.status(500).send("Internal Server Error");
-  }
-});
 
 const corsOptions = {
   origin: 'http://localhost:3000',
@@ -69,6 +44,62 @@ app.get('/api', (req, res) => {
 app.listen(port, () =>
   console.log(`Server running on port ${port}, http://localhost:${port}`)
 );
+
+//making a variable that queries the database for drinks
+const getDrinks = async () => {
+  try {
+    //connecting to the database
+    await sql.connect(sqlConfig);
+    //querying the database
+    const query = await sql.query("SELECT * FROM drinks");
+    return query.recordset;
+  }
+  catch (err) {
+    console.log(err);
+  } finally {
+    //closing connection to database
+    await sql.close();
+  }
+}
+//get method that sends the drinks to the front end
+app.get('/api/beverages', async (req, res) => {
+  try {
+    //getting the drinks from the database and sending it as JSON
+    const drinks = await getDrinks();
+    res.send(JSON.stringify(drinks));
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+//making a variable that queries the database for sides
+const getSides = async () => {
+  try {
+    //connecting to the database
+    await sql.connect(sqlConfig);
+    //querying the database
+    const query = await sql.query("SELECT * FROM sides");
+    return query.recordset;
+  } catch (err) {
+    console.log(err);
+  } finally {
+    //closing connection to database
+    await sql.close();
+  }
+};
+
+//get method that sends the sides to the front end
+app.get("/api/sides", async (req, res) => {
+  try {
+    const sides = await getSides();
+    res.send(JSON.stringify(sides));
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 
 /******************Start of Pizzas***************************** */
 
@@ -129,11 +160,6 @@ const sides = [
     imageSrc: '/images/sides/chickenWings.jpg',
   }
 ]
-
-app.get("/api/sides", (req, res) => {
-    res.send(sides);
-});
-
 /******************End of Sides***************************** */
 
 /******************Start of Beverages***************************** */

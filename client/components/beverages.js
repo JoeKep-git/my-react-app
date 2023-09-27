@@ -19,9 +19,10 @@ const BeveragesList = () => {
                 {beverages.map((beverage) => (
                     <div key={beverage.id} className="col">
                         <div className="card">
-                            <img src={beverage.imageSrc || "http://localhost:8000/api/images/beverage/garlicBread.jpg"} className="card-img-top"/>
+                            <img src={"/images/beverages/"+beverage.pictureName || "http://localhost:8000/api/images/beverage/garlicBread.jpg"} className="card-img-top"/>
                             <div className="card-body">
                                 <h5 className="card-title">{beverage.drinkName}</h5>
+                                <p className="card-text">{beverage.litre}L</p>
                                 <p className="card-text">{currencyFormatter.format(beverage.price)}</p>
                             </div>
                         </div>
