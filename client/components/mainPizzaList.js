@@ -25,6 +25,11 @@ const PizzaList = () => {
                                 <p className="card-text">Toppings: {pizza.toppings.join(', ')}</p>
                                 <p className="card-text">Size: {pizza.size}</p>
                                 <p className="card-text">Price: {currencyFormatter.format(pizza.price)}</p>
+                                <select className="form-select" aria-label="selecting size">
+                                    <option value="small">Small</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="large">Large</option>
+                                </select>
                             </div>
                         </div>
                     </div> 
