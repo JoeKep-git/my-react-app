@@ -24,6 +24,8 @@ const BeveragesList = () => {
                                 <h5 className="card-title">{beverage.drinkName}</h5>
                                 <p className="card-text">{beverage.litre}L</p>
                                 <p className="card-text">{currencyFormatter.format(beverage.price)}</p>
+                                <br/>
+                                <button className="btn btn-primary" onClick={/*need to add functionality for cart button*/()=>console.log("not done")}>Add to Cart</button>
                             </div>
                         </div>
                     </div> 

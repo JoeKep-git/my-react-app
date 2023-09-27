@@ -23,6 +23,8 @@ const SidesList = () => {
                             <div className="card-body">
                                 <h5 className="card-title">{side.sideName}</h5>
                                 <p className="card-text">{currencyFormatter.format(side.price)}</p>
+                                <br/>
+                                <button className="btn btn-primary" onClick={/*need to add functionality for cart button*/()=>console.log("not done")}>Add to Cart</button>
                             </div>
                         </div>
                     </div> 
