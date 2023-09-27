@@ -23,6 +23,21 @@ const sqlConfig = {
   }
 };
 
+const getSides = async () => {
+  try {
+    await sql.connect(sqlConfig);
+    const result = await sql.query("SELECT * FROM sides");
+    console.dir(result);
+    return result;
+  }
+  catch (err) {
+    console.log(err);
+  }
+}
+
+getSides();
+console.log(getSides());
+
 const corsOptions = {
   origin: 'http://localhost:3000',
   optionsSuccessStatus: 200,
