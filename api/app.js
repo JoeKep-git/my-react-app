@@ -19,24 +19,31 @@ const sqlConfig = {
   database: process.env.DB_NAME,
   options: {
     enableArithAbort: true,
-    encrypt: true
+    encrypt: false,
+    trustedServerCertificate: true,
+    trustedConnection: true,
   }
 };
 
-const getSides = async () => {
+const getDrinks = async () => {
   try {
     await sql.connect(sqlConfig);
-    const result = await sql.query("SELECT * FROM sides");
-    console.dir(result);
-    return result;
+    const query = await sql.query("SELECT * FROM drinks");
+    // console.dir(JSON.stringify(query.recordset.length));
+    return JSON.stringify(query.recordset);
   }
   catch (err) {
     console.log(err);
+  } finally {
+    await sql.close();
   }
 }
 
-getSides();
-console.log(getSides());
+app.get('/api/beverages', async (req, res) => {
+  const drinks = await getDrinks();
+  console.log(drinks);
+  res.send(drinks);
+});
 
 const corsOptions = {
   origin: 'http://localhost:3000',
@@ -139,10 +146,6 @@ const beverages = [
     imageSrc: '/images/beverages/pepsi.png',
   }
 ]
-
-app.get("/api/beverages", (req, res) => {
-    res.send(beverages);
-});
 
 /******************End of Beverages***************************** */
 
