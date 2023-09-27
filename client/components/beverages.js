@@ -21,7 +21,7 @@ const BeveragesList = () => {
                         <div className="card">
                             <img src={beverage.imageSrc || "http://localhost:8000/api/images/beverage/garlicBread.jpg"} className="card-img-top"/>
                             <div className="card-body">
-                                <h5 className="card-title">{beverage.name}</h5>
+                                <h5 className="card-title">{beverage.drinkName}</h5>
                                 <p className="card-text">{currencyFormatter.format(beverage.price)}</p>
                             </div>
                         </div>

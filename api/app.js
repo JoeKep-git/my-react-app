@@ -30,7 +30,7 @@ const getDrinks = async () => {
     await sql.connect(sqlConfig);
     const query = await sql.query("SELECT * FROM drinks");
     // console.dir(JSON.stringify(query.recordset.length));
-    return JSON.stringify(query.recordset);
+    return query.recordset;
   }
   catch (err) {
     console.log(err);
@@ -40,9 +40,15 @@ const getDrinks = async () => {
 }
 
 app.get('/api/beverages', async (req, res) => {
-  const drinks = await getDrinks();
-  console.log(drinks);
-  res.send(drinks);
+  try {
+    const drinks = await getDrinks();
+    console.log("im being called");
+    console.log(JSON.stringify(drinks));
+    res.send(JSON.stringify(drinks));
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Internal Server Error");
+  }
 });
 
 const corsOptions = {

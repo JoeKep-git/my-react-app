@@ -9,5 +9,5 @@ INSERT INTO drinks ("drinkname", "litre", "price", "pictureName") VALUES
 ('7-up', 1.5, 3.50, '7-up1.5l.jpg'),
 ('Tango', 1, 2.99, 'tango1l.jpg'),
 ('Tango', 1.5, 3.50, 'tango1.5l.jpg')
-
+select * from drinks;
 DBCC CHECKIDENT ('drinks', RESEED, 1);

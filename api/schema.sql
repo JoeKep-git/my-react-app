@@ -1,16 +1,18 @@
 CREATE TABLE sides(
 	sideID INT NOT NULL PRIMARY KEY IDENTITY,
 	sideName VARCHAR(100) NOT NULL,
-	price DECIMAL NOT NULL,
-	sideDescription VARCHAR(255)
+	price DECIMAL(18,2) NOT NULL,
+	sideDescription VARCHAR(255),
+	pictureName VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE drinks(
 	drinkID INT NOT NULL PRIMARY KEY IDENTITY,
 	drinkName VARCHAR(100) NOT NULL,
-	litre DECIMAL NOT NULL,
-	price DECIMAL NOT NULL,
-	drinkDescription VARCHAR(255)
+	litre DECIMAL(4,2) NOT NULL,
+	price DECIMAL(18,2) NOT NULL,
+	drinkDescription VARCHAR(255),
+	pictureName VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE pizzaSize(
@@ -34,7 +36,8 @@ CREATE TABLE pizza(
 	size INT NOT NULL FOREIGN KEY REFERENCES pizzaSize(pizzasizeid),
 	crust INT NOT NULL FOREIGN KEY REFERENCES pizzaCrust(pizzacrustid),
 	base INT NOT NULL FOREIGN KEY REFERENCES pizzaBase(pizzabaseid),
-	recipe INT NOT NULL FOREIGN KEY REFERENCES pizzaRecipe(pizzarecipeid)
+	recipe INT NOT NULL FOREIGN KEY REFERENCES pizzaRecipe(pizzarecipeid),
+	pictureName VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE pizzaToppings(
