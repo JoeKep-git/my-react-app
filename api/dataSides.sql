@@ -6,3 +6,4 @@ INSERT INTO sides ("sideName","price", "pictureName") VALUES
 ('Chicken Wings', 2.99, 'chickenWings.jpg')
 select * from sides
 DBCC CHECKIDENT ('sides', RESEED, 1);
+USE PizzaShop;

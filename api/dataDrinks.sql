@@ -11,3 +11,4 @@ INSERT INTO drinks ("drinkname", "litre", "price", "pictureName") VALUES
 ('Tango', 1.5, 3.50, 'tango1.5l.jpg')
 select * from drinks;
 DBCC CHECKIDENT ('drinks', RESEED, 1);
+USE PizzaShop;

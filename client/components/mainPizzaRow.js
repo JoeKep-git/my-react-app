@@ -5,7 +5,7 @@ import navValues from "@/helpers/navValues";
 const PizzaRow = ({pizza}) => {
     const {navigate} = useContext(navigationContext);
     return (
-        <tr onClick={() => navigate(navValues.pizza, pizza)}>
+        <tr onClick={() => navigate(navValues.pizzaCustomise, pizza)}>
             <td>{pizza.name}</td>
             <td>{pizza.toppings.join(", ")}</td>
             <td>{pizza.size}</td>

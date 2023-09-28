@@ -6,3 +6,4 @@ INSERT INTO pizzaCrust("pizzaCrust") VALUES
 ('Gluten-Free')
 select * from pizzaCrust
 DBCC CHECKIDENT ('pizzaCrust', RESEED, 1);
+USE PizzaShop;

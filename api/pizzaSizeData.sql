@@ -1,4 +1,5 @@
-INSERT INTO pizzaSize("pizzaSize") VALUES
+INSERT INTO Size (SizeName) VALUES
 ('Small'),
 ('Medium'),
-('Large')
+('Large');
+USE PizzaShop;

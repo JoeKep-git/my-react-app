@@ -15,48 +15,57 @@ CREATE TABLE drinks(
 	pictureName VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE pizzaSize(
-	pizzaSizeID INT NOT NULL PRIMARY KEY IDENTITY,
-	pizzaSize VARCHAR(20) NOT NULL
+CREATE TABLE Toppings (
+    ToppingID INT PRIMARY KEY IDENTITY,
+    ToppingName VARCHAR(255) NOT NULL,
+    IsVegan BIT,
+    IsGlutenFree BIT
 );
 
-CREATE TABLE pizzaCrust(
-	pizzaCrustID INT NOT NULL PRIMARY KEY IDENTITY,
-	pizzaCrust VARCHAR(40) NOT NULL
+CREATE TABLE Crusts (
+    CrustID INT PRIMARY KEY IDENTITY,
+    CrustType VARCHAR(50) NOT NULL,
+    IsVegan BIT NOT NULL,
+    IsGlutenFree BIT NOT NULL
 );
 
-CREATE TABLE pizzaBase(
-	pizzaBaseID INT NOT NULL PRIMARY KEY IDENTITY,
-	baseName VARCHAR(20) NOT NULL
+CREATE TABLE Size (
+	SizeID INT PRIMARY KEY IDENTITY,
+	SizeName VARCHAR(20) NOT NULL
 );
 
-CREATE TABLE pizza(
-	pizzaID INT NOT NULL PRIMARY KEY IDENTITY,
-	pizzaName VARCHAR(50) NOT NULL,
-	size INT NOT NULL FOREIGN KEY REFERENCES pizzaSize(pizzasizeid),
-	crust INT NOT NULL FOREIGN KEY REFERENCES pizzaCrust(pizzacrustid),
-	base INT NOT NULL FOREIGN KEY REFERENCES pizzaBase(pizzabaseid),
-	recipe INT NOT NULL FOREIGN KEY REFERENCES pizzaRecipe(pizzarecipeid),
-	pictureName VARCHAR(255) NOT NULL
+CREATE TABLE PizzaHalves (
+    HalfID INT PRIMARY KEY IDENTITY,
+    HalfName VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE pizzaToppings(
-	toppingsID INT NOT NULL PRIMARY KEY IDENTITY,
-	toppingName VARCHAR(100) NOT NULL,
-	toppingVegan BIT NOT NULL,
-	toppingGlutenFree BIT NOT NULL
+CREATE TABLE Pizza (
+    PizzaID INT PRIMARY KEY IDENTITY,
+    PizzaName VARCHAR(255) NOT NULL,
+    PizzaDescription TEXT,
+    Price DECIMAL(10,2) NOT NULL,
+	IsHalfPizza BIT,
+	HalfID INT,
+    SizeID INT NOT NULL,
+    CrustID INT NOT NULL,
+    FOREIGN KEY (CrustID) REFERENCES Crusts(CrustID),
+	FOREIGN KEY (SizeID) REFERENCES Size(SizeID),
+	FOREIGN KEY (HalfID) REFERENCES PizzaHalves(HalfID)
 );
 
-CREATE TABLE pizzaRecipe(
-	pizzaRecipeID INT NOT NULL PRIMARY KEY IDENTITY,
-	toppings1 INT FOREIGN KEY REFERENCES pizzaToppings(toppingsid),
-	toppings2 INT FOREIGN KEY REFERENCES pizzaToppings(toppingsid),
-	toppings3 INT FOREIGN KEY REFERENCES pizzaToppings(toppingsid),
-	toppings4 INT FOREIGN KEY REFERENCES pizzaToppings(toppingsid),
-	toppings5 INT FOREIGN KEY REFERENCES pizzaToppings(toppingsid),
-	toppings6 INT FOREIGN KEY REFERENCES pizzaToppings(toppingsid),
-	toppings7 INT FOREIGN KEY REFERENCES pizzaToppings(toppingsid),
-	toppings8 INT FOREIGN KEY REFERENCES pizzaToppings(toppingsid),
-	toppings9 INT FOREIGN KEY REFERENCES pizzaToppings(toppingsid),
-	toppings10 INT FOREIGN KEY REFERENCES pizzaToppings(toppingsid)
+CREATE TABLE PizzaHalfToppings (
+    HalfToppingID INT PRIMARY KEY IDENTITY,
+    HalfID INT NOT NULL,
+    ToppingID INT NOT NULL,
+    FOREIGN KEY (HalfID) REFERENCES PizzaHalves(HalfID),
+    FOREIGN KEY (ToppingID) REFERENCES Toppings(ToppingID)
 );
+
+CREATE TABLE PizzaToppings (
+    PizzaToppingID INT PRIMARY KEY IDENTITY,
+    PizzaID INT NOT NULL,
+    ToppingID INT NOT NULL,
+    FOREIGN KEY (PizzaID) REFERENCES Pizza(PizzaID),
+    FOREIGN KEY (ToppingID) REFERENCES Toppings(ToppingID)
+);
+
