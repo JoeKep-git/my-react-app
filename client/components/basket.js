@@ -7,21 +7,48 @@ import loadingStatus from "@/helpers/loadingStatus";
 import { useEffect } from "react";
 import { useCallback } from "react";
 import LoadingIndicator from "./loadingIndicator";
-import { useGetBasketPizza, useGetBasketSide, useGetBasketBeverage } from "@/hooks/useGetBasket";
+import useGetBasketPizza from "@/hooks/useGetBasketPizza";
+import useGetBasketSide from "@/hooks/useGetBasketSide";
+import useGetBasketBeverage from "@/hooks/useGetBasketBeverage";
 
 const Basket = () => {
-    const {basketPizza, setBasketPizza, loadingStatePizza} = useGetBasketPizza();
-    // const {basketSide, setBasketSide, loadingStateSide} = useGetBasketSide();
-    // const {basketBeverage, setBasketBeverage, loadingStateBeverage} = useGetBasketBeverage();
-    
-    // if (basketPizza === undefined && basketSide === undefined && basketBeverage === undefined) {
-    //     console.log(basketPizza + " " + basketSide + " " + basketBeverage);
-    //     return <div><h2>The basket is empty</h2></div>;
-    // }
+    const {basket, setBasket, loadingState} = useGetBasketPizza();
+    const {basketSide, setBasketSide, loadingStateSide} = useGetBasketSide();
+    const {basketBeverage, setBasketBeverage, loadingStateBeverage} = useGetBasketBeverage();
+
+    if(basket === undefined && basketSide === undefined && basketBeverage === undefined) {
+        return <div><h2>No items in basket</h2></div>
+    }
 
     return (
         <>
-        
+            {basket && basket.map((item) => (
+                <div key={item.id}>
+                    <p>{item.name}</p>
+                    <p>{item.size}</p>
+                    <p>{currencyFormatter.format(item.price)}</p>
+                    <img src={item.imageSrc}></img>
+                </div>
+            ))}
+            {basketSide && basketSide.map((item) => (
+                <>
+                    <div key={item.id}>
+                        <p>{item.sideName}</p>
+                        <p>{currencyFormatter.format(item.price)}</p>
+                        <p>{item.pictureName}</p>
+                    </div>
+                </>
+            ))}
+            {basketBeverage && basketBeverage.map((item) => (
+                <>
+                    <div key={item.id}>
+                        <p>{item.drinkName}</p>
+                        <p>{currencyFormatter.format(item.price)}</p>
+                        <p>{item.litre}</p>
+                        <p>{item.pictureName}</p>
+                    </div>
+                </>
+            ))}   
         </>
     )
 };
