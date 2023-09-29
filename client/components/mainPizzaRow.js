@@ -2,23 +2,34 @@ import currencyFormatter from "@/helpers/currencyFormatter";
 import { navigationContext } from "./app";
 import navValues from "@/helpers/navValues";
 import { useContext } from "react";
+import { useState } from "react";
+import useToppings from "@/hooks/useToppings";
 
-const PizzaRow = ({pizza}) => {
-    const {navigate} = useContext(navigationContext);
+//get the toppings from nodejs backend
+//use the toppings to populate buttons to add toppings to the pizza or remove
+
+function PizzaRow({ pizza }) {
+    const { toppings, setToppings, loadingState } = useToppings();
+
+    const { navigate } = useContext(navigationContext);
+    console.log(pizza);
     return (
         <>
-            <button className="btn btn-primary" onClick={() => navigate(navValues.pizza)}>Back</button>
-            <tr>
-                <td>{pizza}</td>
-                <td>{pizza}</td>
-                <td>{pizza}</td>
-                <td>{}</td>
-            </tr>
+            <>
+                {toppings.map((topping) => (
+                    <>
+                    <button className="btn btn-primary">
+                    {topping.ToppingName}
+                    {topping.IsVegan ? "| Vegan ✅ | " : null}
+                    {topping.IsGlutenFree ? "Gluten-free ✅" : null}
+                    </button><br/><br/>
+                    </>
+                ))}
+            </>
         </>
-    )
-};
-
-// const PizzaRowMem = React.memo(PizzaRow);
-
-export default PizzaRow;
+    );
+}
+  
+  export default PizzaRow;
+  
 // export {PizzaRowMem}; Performance gain is insignificant due to how small this is

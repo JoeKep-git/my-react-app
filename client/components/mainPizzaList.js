@@ -11,7 +11,6 @@ import navValues from "@/helpers/navValues";
 
 const PizzaList = () => {
     const {pizzas, setPizzas, loadingState} = usePizzas();
-
     const [selectedPizza, setSelectedPizza] = useState(null);
 
     //conditional rendering
@@ -22,10 +21,12 @@ const PizzaList = () => {
     const handleAddToCart = async (pizza) => {
         const response = await postPizza(pizza);
     };
+
     const {navigate} = useContext(navigationContext);
     const handlePizzaClick = (pizza) => {
-        navigate(navValues.pizzaCustomise)
+        console.log(pizza);
         setSelectedPizza(pizza);
+        navigate(navValues.pizzaCustomise, pizza);
     };
 
     return (
@@ -33,7 +34,7 @@ const PizzaList = () => {
             <div className="row row-cols-1 row-cols-md-2 g-4">
                 {pizzas.map((pizza) => (
                     <div key={pizza.id} className="col">
-                        <div className="card" onClick={() => handlePizzaClick(pizza)}>
+                        <div className="card">
                             {console.log(pizza.imageSrc)}
                             <img src={pizza.imageSrc || "http://localhost:8000/api/images/defaultPizzaPhoto.jpg"} className="card-img-top" alt={pizza.name}/>
                             <div className="card-body">
@@ -47,12 +48,14 @@ const PizzaList = () => {
                                     <option value="large">Large</option>
                                 </select>
                                 <br/>
-                                <button className="btn btn-primary" onClick={() => handleAddToCart(pizza)}>Add to Cart</button>
+                                <button className="btn btn-primary" onClick={() => handleAddToCart(pizza)}>Add to Cart</button> 
+                                <button className="btn btn-primary" onClick={() => handlePizzaClick(pizza)}>Customise</button>
                             </div>
                         </div>
                     </div> 
                 ))}
-                {selectedPizza && <PizzaRow pizza={selectedPizza}/>}
+                        {selectedPizza && <PizzaRow pizza={selectedPizza}/>}
+
             </div>
         </>
     );

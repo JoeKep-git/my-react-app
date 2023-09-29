@@ -34,6 +34,9 @@ const Banner = ({children}) => {
                 <li className="nav-item">
                     <a className="nav-link" href="#" onClick={() => navigate(navValues.drinks)}>Beverages</a>
                 </li>
+                <li className="nav-item">
+                    <a className="nav-link" href="#" onClick={() => navigate(navValues.cart)}>Cart</a>
+                </li>
             </ul>
             
             <div className="col-7 mt-5">

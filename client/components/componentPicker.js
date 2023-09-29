@@ -3,8 +3,9 @@ import SidesList from "./sides";
 import PizzaList from "./mainPizzaList";
 import BeveragesList from "./beverages";
 import PizzaRow from "./mainPizzaRow";
+import Basket from "./basket";
 
-const ComponentPicker = ({currentNavLocation}) => {
+const ComponentPicker = ({currentNavLocation, selectedPizza}) => {
     switch (currentNavLocation) {
         case navValues.home:
             return <PizzaList />;
@@ -15,7 +16,9 @@ const ComponentPicker = ({currentNavLocation}) => {
         case navValues.drinks:
             return <BeveragesList />;
         case navValues.pizzaCustomise:
-            return <PizzaRow />;
+            return <PizzaRow pizza={selectedPizza}/>;
+        case navValues.cart:
+            return <Basket />;
         default:
             return (
                 <h3>

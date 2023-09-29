@@ -117,11 +117,82 @@ app.post("/api/pizzas", async (req, res) => {
     console.log("This is the api/pizzas post request")
     console.log(req.body);
     const item = req.body;
-    req.session.cart = req.session.cart || [];
-    req.session.cart.push(item);
-    res.status(204);
+    req.session.cartPizza = req.session.cartPizza || [];
+    req.session.cartPizza.push(item);
+    // console.log(req.session.cart[0].toppings.push("cheese"))
+    // console.log(req.session.cart[0]);
+    res.send("Pizza added to cart");
 
   } catch (err) {
+    console.log(err);
+    res.status(500).send("Internal Server Error");
+  }
+});
+//post method that will save the order to the session
+app.post("/api/sides", async (req, res) => {
+  try {
+    console.log("This is the api/sides post request")
+    console.log(req.body);
+    const item = req.body;
+    req.session.cartSide = req.session.cartSide || [];
+    req.session.cartSide.push(item);
+    // console.log(req.session.cart[0].toppings.push("cheese"))
+    // console.log(req.session.cart[0]);
+    res.send("Side added to cart");
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+//post method that will save the order to the session
+app.post("/api/beverage", async (req, res) => {
+  try {
+    console.log("This is the api/sides post request")
+    console.log(req.body);
+    const item = req.body;
+    req.session.cartBeverage = req.session.cartBeverage || [];
+    req.session.cartBeverage.push(item);
+    // console.log(req.session.cart[0].toppings.push("cheese"))
+    // console.log(req.session.cart[0]);
+    res.send("Side added to cart");
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+app.get("/api/cartPizza", async (req, res) => {
+  try {
+    console.log("This is the api/cart get request")
+    console.log(req.session.cartPizza);
+    res.send(req.session.cartPizza);
+  }
+  catch (err) {
+    console.log(err);
+    res.status(500).send("Internal Server Error");
+  }
+});
+app.get("/api/cartSide", async (req, res) => {
+  try {
+    console.log("This is the api/cart get request")
+    console.log(req.session.cartSide);
+    res.send(req.session.cartSide);
+  }
+  catch (err) {
+    console.log(err);
+    res.status(500).send("Internal Server Error");
+  }
+});
+app.get("/api/cartBeverage", async (req, res) => {
+  try {
+    console.log("This is the api/cart get request")
+    console.log(req.session.cartBeverage);
+    res.send(req.session.cartBeverage);
+  }
+  catch (err) {
     console.log(err);
     res.status(500).send("Internal Server Error");
   }
@@ -147,6 +218,19 @@ app.get("/api/pizza", async (req, res) => {
   try {
     await sql.connect(sqlConfig);
     const query = await sql.query("SELECT * FROM Pizza");
+    res.send(JSON.stringify(query.recordset));
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Internal Server Error");
+  } finally {
+    await sql.close();
+  }
+});
+
+app.get("/api/toppings", async (req, res) => {
+  try {
+    await sql.connect(sqlConfig);
+    const query = await sql.query("SELECT * FROM Toppings");
     res.send(JSON.stringify(query.recordset));
   } catch (err) {
     console.log(err);

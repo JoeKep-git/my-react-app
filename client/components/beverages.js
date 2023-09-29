@@ -3,6 +3,7 @@ import loadingStatus from "@/helpers/loadingStatus";
 import LoadingIndicator from "./loadingIndicator";
 import useBeverages from "@/hooks/useBeverages";
 import currencyFormatter from "@/helpers/currencyFormatter";
+import postBeverage from "@/hooks/usePostBeverages";
 
 //display the sides
 const BeveragesList = () => {
@@ -12,6 +13,10 @@ const BeveragesList = () => {
     if(loadingState !== loadingStatus.loaded) {
         return <LoadingIndicator loadingState={loadingState} />;
     }
+
+    const handleAddToCart = async (beverage) => {
+        const response = await postBeverage(beverage);
+    };
 
     return (
         <>
@@ -25,7 +30,7 @@ const BeveragesList = () => {
                                 <p className="card-text">{beverage.litre}L</p>
                                 <p className="card-text">{currencyFormatter.format(beverage.price)}</p>
                                 <br/>
-                                <button className="btn btn-primary" onClick={/*need to add functionality for cart button*/()=>console.log("not done")}>Add to Cart</button>
+                                <button className="btn btn-primary" onClick={()=> handleAddToCart(beverage)}>Add to Cart</button>
                             </div>
                         </div>
                     </div> 
