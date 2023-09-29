@@ -69,3 +69,12 @@ CREATE TABLE PizzaToppings (
     FOREIGN KEY (ToppingID) REFERENCES Toppings(ToppingID)
 );
 
+SELECT * FROM Crusts;
+SELECT * FROM Drinks;
+SELECT * FROM Pizza;
+SELECT * FROM PizzaHalfToppings;
+SELECT * FROM PizzaHalves;
+SELECT * FROM PizzaToppings;
+SELECT * FROM Sides;
+SELECT * FROM Size;
+SELECT * FROM Toppings;

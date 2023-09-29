@@ -16,3 +16,5 @@ INSERT INTO Pizza (PizzaName, PizzaDescription, Price, SizeID, CrustID) VALUES
 ('Gluten-Free BBQ Chick''n', 'BBQ chick''n, red onions, cilantro on a gluten-free crust', 13.99, 2, 5); -- Gluten-Free BBQ Chick'n
 SELECT * FROM Pizza;
 DBCC CHECKIDENT ('Pizza', RESEED, 1);
+
+--NEDS CHANGING SO THAT SIZE ISNT INCLUDED BUT THE PRICE IS. (IN THE FRONT END/BACK END I WILL GET THE SIZE AND CALCULATE THE PRICE ie add on top of price)

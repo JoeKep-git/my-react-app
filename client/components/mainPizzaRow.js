@@ -1,16 +1,20 @@
 import currencyFormatter from "@/helpers/currencyFormatter";
 import { navigationContext } from "./app";
 import navValues from "@/helpers/navValues";
+import { useContext } from "react";
 
 const PizzaRow = ({pizza}) => {
     const {navigate} = useContext(navigationContext);
     return (
-        <tr onClick={() => navigate(navValues.pizzaCustomise, pizza)}>
-            <td>{pizza.name}</td>
-            <td>{pizza.toppings.join(", ")}</td>
-            <td>{pizza.size}</td>
-            <td>{currencyFormatter.format(pizza.price)}</td>
-        </tr>
+        <>
+            <button className="btn btn-primary" onClick={() => navigate(navValues.pizza)}>Back</button>
+            <tr>
+                <td>{pizza}</td>
+                <td>{pizza}</td>
+                <td>{pizza}</td>
+                <td>{}</td>
+            </tr>
+        </>
     )
 };
 

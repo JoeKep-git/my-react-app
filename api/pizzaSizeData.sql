@@ -1,5 +1,7 @@
 INSERT INTO Size (SizeName) VALUES
 ('Small'),
 ('Medium'),
-('Large');
+('Large'),
+('Pizzanormous');
+SELECT * FROM Size;
 USE PizzaShop;

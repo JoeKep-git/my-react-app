@@ -127,6 +127,34 @@ app.post("/api/pizzas", async (req, res) => {
   }
 });
 
+app.get("/api/pizzaQuery", async (req, res) => {
+  try {
+    await sql.connect(sqlConfig);
+    const query = await sql.query("SELECT * FROM PizzaDetails WHERE PizzaName = $1", req.body.pizzaName);
+    for (let i = 0; i < query.recordset.length; i++) {
+      console.log(query.recordset[i].ToppingName);
+    }
+    res.send(JSON.stringify(query.recordset));
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Internal Server Error");
+  } finally {
+    await sql.close();
+  }
+});
+
+app.get("/api/pizza", async (req, res) => {
+  try {
+    await sql.connect(sqlConfig);
+    const query = await sql.query("SELECT * FROM Pizza");
+    res.send(JSON.stringify(query.recordset));
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Internal Server Error");
+  } finally {
+    await sql.close();
+  }
+});
 /******************Start of Pizzas***************************** */
 
 const pizzas = [

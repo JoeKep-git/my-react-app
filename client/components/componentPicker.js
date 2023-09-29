@@ -2,6 +2,7 @@ import navValues from "@/helpers/navValues";
 import SidesList from "./sides";
 import PizzaList from "./mainPizzaList";
 import BeveragesList from "./beverages";
+import PizzaRow from "./mainPizzaRow";
 
 const ComponentPicker = ({currentNavLocation}) => {
     switch (currentNavLocation) {
@@ -13,6 +14,8 @@ const ComponentPicker = ({currentNavLocation}) => {
             return <SidesList />;
         case navValues.drinks:
             return <BeveragesList />;
+        case navValues.pizzaCustomise:
+            return <PizzaRow />;
         default:
             return (
                 <h3>
