@@ -282,7 +282,7 @@ const pizzas = [
   {
       id: 1,
       name: "Pizza 1",
-      toppings: ["cheese", "pepperoni"],
+      toppings: ["Mozzarella Cheese", "Pepperoni"],
       size: "small",
       price: 10.99,
       imageSrc: '/images/defaultPizzaPhoto.jpg',
@@ -290,7 +290,7 @@ const pizzas = [
   {
       id: 2,
       name: "Pizza 2",
-      toppings: ["cheese", "pepperoni", "sausage"],
+      toppings: ["Mozzarella Cheese", "pepperoni", "sausage"],
       size: "medium",
       price: 12.99,
       imageSrc: '/images/pizzaTest.jpeg',
@@ -298,7 +298,7 @@ const pizzas = [
   {
       id: 3,
       name: "Pizza 3",
-      toppings: ["cheese", "pepperoni", "sausage", "mushrooms"],
+      toppings: ["Mozzarella Cheese", "pepperoni", "sausage", "mushrooms"],
       size: "large",
       price: 14.99,
       imageSrc: '/images/defaultPizzaPhoto.jpg',
@@ -306,7 +306,7 @@ const pizzas = [
   {
       id: 4,
       name: "Pizza 4",
-      toppings: ["cheese", "pepperoni", "sausage", "mushrooms", "onions"],
+      toppings: ["Mozzarella Cheese", "pepperoni", "sausage", "mushrooms", "onions"],
       size: "small",
       price: 10.99,
       imageSrc: '/images/defaultPizzaPhoto.jpg',
