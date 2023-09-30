@@ -276,6 +276,21 @@ app.get("/api/toppings", async (req, res) => {
     await sql.close();
   }
 });
+
+const getPizza = async () => {
+  try {
+    await sql.connect(sqlConfig);
+    const query = await sql.query("SELECT * FROM PizzaDetails WHERE PizzaName = 'Vegan Supreme'");
+    console.log(query.recordset);
+    return query.recordset;
+  } catch (err) {
+    console.log(err);
+  } finally {
+    await sql.close();
+  }
+}
+
+getPizza();
 /******************Start of Pizzas***************************** */
 
 const pizzas = [
