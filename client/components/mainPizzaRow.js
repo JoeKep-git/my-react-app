@@ -5,6 +5,10 @@ import { useContext } from "react";
 import { useState } from "react";
 import useToppings from "@/hooks/useToppings";
 import useGetCustomise from "@/hooks/useGetCustomise";
+import postPizza from "@/hooks/usePostPizza";
+import { useRef } from "react";
+import { useEffect } from "react";
+
 //get the toppings from nodejs backend
 //use the toppings to populate buttons to add toppings to the pizza or remove
 
@@ -12,9 +16,9 @@ function PizzaRow({ pizza }) {
     const { toppings, setToppings, loadingState } = useToppings();
     const { customise, setCustomise, loadingStateCustomise } = useGetCustomise();
     const { navigate } = useContext(navigationContext);
-    console.log(customise);
-    console.log(pizza);
-
+    const addToCartButtonRef = useRef(null);
+    const [selectedToppings, setSelectedToppings] = useState([]);
+    const [selectedPizza, setSelectedPizza] = useState(null);
     const handleToppingClick = (toppingName) => {
         setCustomise(prevState => {
             const updatedCustomise = prevState.map(customiseItem => {
@@ -29,6 +33,34 @@ function PizzaRow({ pizza }) {
         });
     };
 
+    useEffect(() => {
+        handleAddToCart();
+    }, [selectedToppings, selectedPizza]);
+
+    const handleAddToCart = () => {
+        if (selectedPizza) {
+        // Gather selected toppings with class name "btn-success"
+        const selectedToppings = document.querySelectorAll(".btn-success");
+        const selectedToppingsArray = Array.from(selectedToppings).map(
+            (topping) => topping.innerText.trim()
+        );
+
+        // Gather pizza name
+        const pizzaName = selectedPizza.name;
+
+        // Combine them into a variable
+        const cartItem = {
+            name: pizzaName,
+            toppings: selectedToppingsArray,
+            price: selectedPizza.price,
+            imageSrc: selectedPizza.imageSrc,
+        };
+
+        // Print the result
+        console.log("Added to Cart:", cartItem);
+            postPizza(cartItem);
+        }
+    };
     return (
         <>
             <div className="card">
@@ -46,7 +78,7 @@ function PizzaRow({ pizza }) {
                             <>
                             <button
                                     className={`btn ${customise.toppings.includes(topping.ToppingName) ? 'btn-success' : 'btn-primary'}`}
-                                    onClick={() => handleToppingClick(topping.ToppingName)}
+                                    onClick={() => {handleToppingClick(topping.ToppingName)}}
                                 >
                                 {topping.ToppingName}
                                 {topping.IsVegan ? "| Vegan ✅ | " : null}
@@ -55,6 +87,21 @@ function PizzaRow({ pizza }) {
                             </>
                         ))}
                         </div>
+                        <button
+                            ref={addToCartButtonRef}
+                            className="btn btn-primary"
+                            onClick={() => {
+                            setSelectedToppings(
+                                customise.toppings.filter((topping) =>
+                                selectedToppings.includes(topping)
+                                )
+                            );
+                            setSelectedPizza(customise);
+                            handleAddToCart(); // Call the function when the button is clicked
+                            }}
+                        >
+                        Add to Cart
+                        </button>
                     </div>
                     ))}
                 </div>

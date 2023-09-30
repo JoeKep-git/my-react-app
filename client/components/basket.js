@@ -21,14 +21,21 @@ const Basket = () => {
     }
 
     return (
-        <>
+        <div className="row row-cols-1 row-cols-md-2 g-4">
             {basket && basket.map((item) => (
-                <div key={item.id}>
-                    <p>{item.name}</p>
-                    <p>{item.size}</p>
-                    <p>{currencyFormatter.format(item.price)}</p>
-                    <img src={item.imageSrc}></img>
-                </div>
+
+                    <div key={item.id} className="col">
+                        <div className="card">
+                        <img src={item.imageSrc} className="card-img-top" ></img>
+                        <div className="card-body">
+                        <h5 className="card-title">{item.name}</h5>
+                        <p className="card-text">{item.size}</p>
+                        <p className="card-text">{currencyFormatter.format(item.price)}</p>
+                        <p className="card-text">{item.toppings.join(', ')}</p>
+                        </div>
+                        </div>
+                    </div>
+
             ))}
             {basketSide && basketSide.map((item) => (
                 <>
@@ -49,7 +56,7 @@ const Basket = () => {
                     </div>
                 </>
             ))}   
-        </>
+        </div>
     )
 };
 

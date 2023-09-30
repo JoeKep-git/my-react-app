@@ -203,7 +203,7 @@ app.get("/api/customise", async (req, res) => {
 
 app.get("/api/cartPizza", async (req, res) => {
   try {
-    console.log("This is the api/cart get request")
+    console.log("This is the api/cart pizza get request")
     console.log(req.session.cartPizza);
     res.send(req.session.cartPizza);
   }
