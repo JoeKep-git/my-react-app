@@ -23,9 +23,8 @@ const Basket = () => {
     return (
         <div className="row row-cols-1 row-cols-md-2 g-4">
             {basket && basket.map((item) => (
-
-                    <div key={item.id} className="col">
-                        <div className="card">
+                <div key={item.id} className="col">
+                    <div className="card">
                         <img src={item.imageSrc} className="card-img-top" ></img>
                         <div className="card-body">
                         <h5 className="card-title">{item.name}</h5>
@@ -33,28 +32,32 @@ const Basket = () => {
                         <p className="card-text">{currencyFormatter.format(item.price)}</p>
                         <p className="card-text">{item.toppings.join(', ')}</p>
                         </div>
-                        </div>
                     </div>
+                </div>
 
             ))}
             {basketSide && basketSide.map((item) => (
-                <>
-                    <div key={item.id}>
-                        <p>{item.sideName}</p>
-                        <p>{currencyFormatter.format(item.price)}</p>
-                        <p>{item.pictureName}</p>
+                <div key={item.id} className="col">
+                    <div className="card">
+                        <img src={item.pictureName} className="card-img-top" ></img>
+                        <div className="card-body">
+                            <p className="card-text">{item.sideName}</p>
+                            <p className="card-text">{currencyFormatter.format(item.price)}</p>
+                        </div>
                     </div>
-                </>
+                </div>
             ))}
             {basketBeverage && basketBeverage.map((item) => (
-                <>
-                    <div key={item.id}>
-                        <p>{item.drinkName}</p>
-                        <p>{currencyFormatter.format(item.price)}</p>
-                        <p>{item.litre}</p>
-                        <p>{item.pictureName}</p>
+                <div key={item.id} className="col">
+                    <div className="card">
+                    <img src={item.pictureName} className="card-img-top" ></img>
+                        <div className="card-body">
+                            <p className="card-title">{item.drinkName}</p>
+                            <p className="card-text">{currencyFormatter.format(item.price)}</p>
+                            <p className="card-text">{item.litre}</p>
+                        </div>
                     </div>
-                </>
+                </div>
             ))}   
         </div>
     )
