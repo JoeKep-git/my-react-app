@@ -19,7 +19,7 @@ VALUES
     (3, 10),  -- Bell Peppers
     (3, 11),  -- Onions
     (3, 12),  -- Olives
-    (3, 10); -- Mushrooms
+    (3, 13); -- Mushrooms
 
 -- Inserting toppings for the Gluten-Free Margherita pizza 
 INSERT INTO PizzaToppings (PizzaID, ToppingID)

@@ -28,10 +28,19 @@ const sqlConfig = {
   }
 };
 
+const allowedOrigins = ['http://localhost:3000']; //Nextjs Reactjs Origin
+
 const corsOptions = {
-  origin: 'http://localhost:3000',
-  optionsSuccessStatus: 200,
-}; 
+  origin: function(origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+};
+
+app.use(cors(corsOptions));
 
 //middleware
 app.use(session({
@@ -41,8 +50,6 @@ app.use(session({
 }));
 
 app.use(bodyParser.json());
-
-app.use(cors(corsOptions));
 
 app.get('/', (req, res) => {
   res.send('Home Route');
@@ -159,6 +166,36 @@ app.post("/api/beverage", async (req, res) => {
     res.send("Side added to cart");
 
   } catch (err) {
+    console.log(err);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+//post method that will save the pizza order to the session when the user clicks customise
+app.post("/api/customise", async (req, res) => { 
+  try {
+    console.log("This is the api/customise post request")
+    console.log(req.body);
+    const item = req.body;
+    req.session.customise = []; //empty the customise array so that it doesn't keep adding to it
+    req.session.customise.push(item);
+    // console.log(req.session.cart[0].toppings.push("cheese"))
+    // console.log(req.session.cart[0]);
+    res.send("Pizza added to customise");
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+//get request to get the information to customise the pizza
+app.get("/api/customise", async (req, res) => {
+  try {
+    console.log("This is the api/customise get request")
+    console.log(req.session.customise);
+    res.send(req.session.customise);
+  }
+  catch (err) {
     console.log(err);
     res.status(500).send("Internal Server Error");
   }

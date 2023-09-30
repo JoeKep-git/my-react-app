@@ -29,11 +29,6 @@ CREATE TABLE Crusts (
     IsGlutenFree BIT NOT NULL
 );
 
-CREATE TABLE Size (
-	SizeID INT PRIMARY KEY IDENTITY,
-	SizeName VARCHAR(20) NOT NULL
-);
-
 CREATE TABLE PizzaHalves (
     HalfID INT PRIMARY KEY IDENTITY,
     HalfName VARCHAR(255) NOT NULL
@@ -46,11 +41,9 @@ CREATE TABLE Pizza (
     Price DECIMAL(10,2) NOT NULL,
 	IsHalfPizza BIT,
 	HalfID INT,
-    SizeID INT NOT NULL,
-    CrustID INT NOT NULL,
-    FOREIGN KEY (CrustID) REFERENCES Crusts(CrustID),
-	FOREIGN KEY (SizeID) REFERENCES Size(SizeID),
-	FOREIGN KEY (HalfID) REFERENCES PizzaHalves(HalfID)
+	CrustID INT,
+	FOREIGN KEY (HalfID) REFERENCES PizzaHalves(HalfID),
+	FOREIGN KEY (CrustID) REFERENCES Crusts(CrustID)
 );
 
 CREATE TABLE PizzaHalfToppings (
@@ -78,3 +71,27 @@ SELECT * FROM PizzaToppings;
 SELECT * FROM Sides;
 SELECT * FROM Size;
 SELECT * FROM Toppings;
+
+
+CREATE VIEW PizzaDetails AS
+SELECT 
+    p.PizzaName,
+    c.CrustType,
+    c.IsVegan AS CrustIsVegan,
+    c.IsGlutenFree AS CrustIsGlutenFree,
+    t.ToppingName,
+    t.IsVegan AS ToppingIsVegan,
+    t.IsGlutenFree AS ToppingIsGlutenFree,
+    p.Price
+FROM 
+    Pizza p
+JOIN 
+    Crusts c ON p.CrustID = c.CrustID
+LEFT JOIN 
+    PizzaToppings pt ON p.PizzaID = pt.PizzaID
+JOIN 
+    Toppings t ON pt.ToppingID = t.ToppingID;
+
+
+
+SELECT * FROM PIZZADETAILS

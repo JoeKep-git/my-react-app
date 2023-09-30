@@ -8,10 +8,10 @@ import { useState } from "react";
 import { navigationContext } from "./app";
 import { useContext } from "react";
 import navValues from "@/helpers/navValues";
+import postCusomise from "@/hooks/usePostCustomise";
 
 const PizzaList = () => {
     const {pizzas, setPizzas, loadingState} = usePizzas();
-    const [selectedPizza, setSelectedPizza] = useState(null);
 
     //conditional rendering
     if(loadingState !== loadingStatus.loaded) {
@@ -23,10 +23,9 @@ const PizzaList = () => {
     };
 
     const {navigate} = useContext(navigationContext);
-    const handlePizzaClick = (pizza) => {
-        console.log(pizza);
-        setSelectedPizza(pizza);
-        navigate(navValues.pizzaCustomise, pizza);
+    const handlePizzaClick = async (customise) => {
+        const response = await postCusomise(customise);
+        navigate(navValues.pizzaCustomise, customise);
     };
 
     return (
@@ -54,8 +53,6 @@ const PizzaList = () => {
                         </div>
                     </div> 
                 ))}
-                        {selectedPizza && <PizzaRow pizza={selectedPizza}/>}
-
             </div>
         </>
     );
