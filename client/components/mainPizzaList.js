@@ -12,6 +12,7 @@ import postCusomise from "@/hooks/usePostCustomise";
 
 const PizzaList = () => {
     const {pizzas, setPizzas, loadingState} = usePizzas();
+    const [selectedSize, setSelectedSize] = useState('small'); // Default value is 'small'
 
     //conditional rendering
     if(loadingState !== loadingStatus.loaded) {
@@ -20,6 +21,11 @@ const PizzaList = () => {
 
     const handleAddToCart = async (pizza) => {
         const response = await postPizza(pizza);
+    };
+
+    const handleSizeChange = (event) => {
+        setSelectedSize(event.target.value);
+        console.log(event.target.value);
     };
 
     const {navigate} = useContext(navigationContext);
@@ -39,9 +45,8 @@ const PizzaList = () => {
                             <div className="card-body">
                                 <h5 className="card-title">{pizza.name}</h5>
                                 <p className="card-text">Toppings: {pizza.toppings.join(', ')}</p>
-                                <p className="card-text">Size: {pizza.size}</p>
                                 <p className="card-text">Price: {currencyFormatter.format(pizza.price)}</p>
-                                <select className="form-select" aria-label="selecting size">
+                                <select className="form-select" aria-label="selecting size" onChange={handleSizeChange} value={selectedSize}>
                                     <option value="small">Small</option>
                                     <option value="medium">Medium</option>
                                     <option value="large">Large</option>
