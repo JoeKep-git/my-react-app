@@ -19,8 +19,8 @@ const PizzaList = () => {
         return <LoadingIndicator loadingState={loadingState} />;
     }
 
-    const handleAddToCart = async (pizza) => {
-        const response = await postPizza(pizza);
+    const handleAddToCart = async (pizza, size) => {
+        const response = await postPizza(pizza, size);
     };
 
     const handleSizeChange = (event) => {
@@ -52,7 +52,7 @@ const PizzaList = () => {
                                     <option value="large">Large</option>
                                 </select>
                                 <br/>
-                                <button className="btn btn-primary" onClick={() => handleAddToCart(pizza)}>Add to Cart</button> 
+                                <button className="btn btn-primary" onClick={() => handleAddToCart(pizza, selectedSize)}>Add to Cart</button> 
                                 <button className="btn btn-primary" onClick={() => handlePizzaClick(pizza)}>Customise</button>
                             </div>
                         </div>
