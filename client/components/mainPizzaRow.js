@@ -19,6 +19,13 @@ function PizzaRow({ pizza }) {
     const addToCartButtonRef = useRef(null);
     const [selectedToppings, setSelectedToppings] = useState([]);
     const [selectedPizza, setSelectedPizza] = useState(null);
+    const [selectedSize, setSelectedSize] = useState('small'); // Default value is 'small'
+
+    const handleSizeChange = (event) => {
+        setSelectedSize(event.target.value);
+        console.log(event.target.value);
+    };
+
     const handleToppingClick = (toppingName) => {
         setCustomise(prevState => {
             const updatedCustomise = prevState.map(customiseItem => {
@@ -58,7 +65,7 @@ function PizzaRow({ pizza }) {
 
         // Print the result
         console.log("Added to Cart:", cartItem);
-            postPizza(cartItem);
+            postPizza(cartItem, selectedSize);
         }
     };
     return (
@@ -87,6 +94,11 @@ function PizzaRow({ pizza }) {
                             </>
                         ))}
                         </div>
+                        <select className="form-select" aria-label="selecting size" onChange={handleSizeChange} value={selectedSize}>
+                            <option value="small">Small</option>
+                            <option value="medium">Medium</option>
+                            <option value="large">Large</option>
+                        </select><br/><br/>
                         <button
                             ref={addToCartButtonRef}
                             className="btn btn-primary"
