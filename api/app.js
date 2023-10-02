@@ -295,37 +295,125 @@ getPizza();
 
 const pizzas = [
   {
-      id: 1,
-      name: "Pizza 1",
-      toppings: ["Mozzarella Cheese", "Pepperoni"],
-      size: "small",
-      price: 10.99,
-      imageSrc: '/images/defaultPizzaPhoto.jpg',
+      "id": 1,
+      "name": "Green Garden Delight",
+      "toppings": ["Vegan Cheese", "Bell Peppers", "Onions", "Mushrooms", "Spinach"],
+      "size": "small",
+      "price": 10.99,
+      "imageSrc": "/images/defaultPizzaPhoto.jpg"
   },
   {
-      id: 2,
-      name: "Pizza 2",
-      toppings: ["Mozzarella Cheese", "pepperoni", "sausage"],
-      size: "medium",
-      price: 12.99,
-      imageSrc: '/images/pizzaTest.jpeg',
+      "id": 2,
+      "name": "Mediterranean Sunset",
+      "toppings": ["Vegan Cheese", "Sun-dried Tomatoes", "Kalamata Olives", "Cilantro", "Red Onions"],
+      "size": "small",
+      "price": 10.99,
+      "imageSrc": "/images/defaultPizzaPhoto.jpg"
   },
   {
-      id: 3,
-      name: "Pizza 3",
-      toppings: ["Mozzarella Cheese", "pepperoni", "sausage", "mushrooms"],
-      size: "large",
-      price: 14.99,
-      imageSrc: '/images/defaultPizzaPhoto.jpg',
+      "id": 3,
+      "name": "Savory Veggie Medley",
+      "toppings": ["Vegan Cheese", "Bell Peppers", "Onions", "Olives", "Mushrooms"],
+      "size": "small",
+      "price": 10.99,
+      "imageSrc": "/images/defaultPizzaPhoto.jpg"
   },
   {
-      id: 4,
-      name: "Pizza 4",
-      toppings: ["Mozzarella Cheese", "pepperoni", "sausage", "mushrooms", "onions"],
-      size: "small",
-      price: 10.99,
-      imageSrc: '/images/defaultPizzaPhoto.jpg',
+      "id": 4,
+      "name": "Sun-Kissed Spinach Sensation",
+      "toppings": ["Vegan Cheese", "Spinach", "Sun-dried Tomatoes", "Kalamata Olives", "Red Onions"],
+      "size": "small",
+      "price": 10.99,
+      "imageSrc": "/images/defaultPizzaPhoto.jpg"
   },
+  {
+      "id": 5,
+      "name": "Colorful Vegan Fiesta",
+      "toppings": ["Vegan Cheese", "Bell Peppers", "Onions", "Mushrooms", "Red Onions"],
+      "size": "small",
+      "price": 10.99,
+      "imageSrc": "/images/defaultPizzaPhoto.jpg"
+  },
+  {
+      "id": 6,
+      "name": "Classic Ham and Cheese",
+      "toppings": ["Ham", "Mozzarella Cheese", "Parmesan Cheese", "Cheddar Cheese"],
+      "size": "small",
+      "price": 10.99,
+      "imageSrc": "/images/defaultPizzaPhoto.jpg"
+  },
+  {
+      "id": 7,
+      "name": "Bacon Lover's Dream",
+      "toppings": ["Bacon", "Mozzarella Cheese", "Parmesan Cheese", "Cheddar Cheese"],
+      "size": "small",
+      "price": 10.99,
+      "imageSrc": "/images/defaultPizzaPhoto.jpg"
+  },
+  {
+      "id": 8,
+      "name": "Sausage Extravaganza",
+      "toppings": ["Sausage", "Mozzarella Cheese", "Parmesan Cheese", "Cheddar Cheese"],
+      "size": "small",
+      "price": 10.99,
+      "imageSrc": "/images/defaultPizzaPhoto.jpg"
+  },
+  {
+      "id": 9,
+      "name": "Pepperoni Paradise",
+      "toppings": ["Pepperoni", "Mozzarella Cheese", "Parmesan Cheese", "Cheddar Cheese"],
+      "size": "small",
+      "price": 10.99,
+      "imageSrc": "/images/defaultPizzaPhoto.jpg"
+  },
+  {
+      "id": 10,
+      "name": "Savory Meat Feast",
+      "toppings": ["Pepperoni", "Sausage", "Mozzarella Cheese", "Parmesan Cheese"],
+      "size": "small",
+      "price": 10.99,
+      "imageSrc": "/images/defaultPizzaPhoto.jpg"
+  },
+  {
+      "id": 11,
+      "name": "Ham and Mushroom Magic",
+      "toppings": ["Ham", "Mozzarella Cheese", "Parmesan Cheese", "Mushrooms"],
+      "size": "small",
+      "price": 10.99,
+      "imageSrc": "/images/defaultPizzaPhoto.jpg"
+  },
+  {
+      "id": 12,
+      "name": "Bacon and Spinach Supreme",
+      "toppings": ["Bacon", "Mozzarella Cheese", "Parmesan Cheese", "Spinach"],
+      "size": "small",
+      "price": 10.99,
+      "imageSrc": "/images/defaultPizzaPhoto.jpg"
+  },
+  {
+      "id": 13,
+      "name": "Four Cheese Delight",
+      "toppings": ["Mozzarella Cheese", "Parmesan Cheese", "Cheddar Cheese", "Ricotta Cheese"],
+      "size": "small",
+      "price": 10.99,
+      "imageSrc": "/images/defaultPizzaPhoto.jpg"
+  },
+  {
+      "id": 14,
+      "name": "Pepperoni Ricotta Bliss",
+      "toppings": ["Pepperoni", "Mozzarella Cheese", "Parmesan Cheese", "Ricotta Cheese"],
+      "size": "small",
+      "price": 10.99,
+      "imageSrc": "/images/defaultPizzaPhoto.jpg"
+  },
+  {
+      "id": 15,
+      "name": "Sausage and Onion Symphony",
+      "toppings": ["Sausage", "Mozzarella Cheese", "Parmesan Cheese", "Red Onions"],
+      "size": "small",
+      "price": 10.99,
+      "imageSrc": "/images/defaultPizzaPhoto.jpg"
+  }
 ];
 
 app.get("/api/pizzas", (req, res) => {
