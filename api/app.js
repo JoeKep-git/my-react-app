@@ -300,7 +300,7 @@ const pizzas = [
       "toppings": ["Vegan Cheese", "Bell Peppers", "Onions", "Mushrooms", "Spinach"],
       "size": "small",
       "price": 10.99,
-      "imageSrc": "/images/defaultPizzaPhoto.jpg"
+      "imageSrc": "/images/GreenGardenDelight.jpg"
   },
   {
       "id": 2,
@@ -308,7 +308,7 @@ const pizzas = [
       "toppings": ["Vegan Cheese", "Sun-dried Tomatoes", "Kalamata Olives", "Cilantro", "Red Onions"],
       "size": "small",
       "price": 10.99,
-      "imageSrc": "/images/defaultPizzaPhoto.jpg"
+      "imageSrc": "/images/MedPizza.jpg"
   },
   {
       "id": 3,
@@ -316,7 +316,7 @@ const pizzas = [
       "toppings": ["Vegan Cheese", "Bell Peppers", "Onions", "Olives", "Mushrooms"],
       "size": "small",
       "price": 10.99,
-      "imageSrc": "/images/defaultPizzaPhoto.jpg"
+      "imageSrc": "/images/SausageandOnionSymphony.jpg"
   },
   {
       "id": 4,
@@ -324,7 +324,7 @@ const pizzas = [
       "toppings": ["Vegan Cheese", "Spinach", "Sun-dried Tomatoes", "Kalamata Olives", "Red Onions"],
       "size": "small",
       "price": 10.99,
-      "imageSrc": "/images/defaultPizzaPhoto.jpg"
+      "imageSrc": "/images/Sun-KissedSpinachSensation.jpg"
   },
   {
       "id": 5,
@@ -332,7 +332,7 @@ const pizzas = [
       "toppings": ["Vegan Cheese", "Bell Peppers", "Onions", "Mushrooms", "Red Onions"],
       "size": "small",
       "price": 10.99,
-      "imageSrc": "/images/defaultPizzaPhoto.jpg"
+      "imageSrc": "/images/ColorfulVeganFiesta.jpg"
   },
   {
       "id": 6,
@@ -340,7 +340,7 @@ const pizzas = [
       "toppings": ["Ham", "Mozzarella Cheese", "Parmesan Cheese", "Cheddar Cheese"],
       "size": "small",
       "price": 10.99,
-      "imageSrc": "/images/defaultPizzaPhoto.jpg"
+      "imageSrc": "/images/ClassicHamandCheese.jpg"
   },
   {
       "id": 7,
@@ -348,7 +348,7 @@ const pizzas = [
       "toppings": ["Bacon", "Mozzarella Cheese", "Parmesan Cheese", "Cheddar Cheese"],
       "size": "small",
       "price": 10.99,
-      "imageSrc": "/images/defaultPizzaPhoto.jpg"
+      "imageSrc": "/images/BaconLoversDream.jpg"
   },
   {
       "id": 8,
@@ -356,7 +356,7 @@ const pizzas = [
       "toppings": ["Sausage", "Mozzarella Cheese", "Parmesan Cheese", "Cheddar Cheese"],
       "size": "small",
       "price": 10.99,
-      "imageSrc": "/images/defaultPizzaPhoto.jpg"
+      "imageSrc": "/images/SausageExtravaganza.jpg"
   },
   {
       "id": 9,
@@ -364,7 +364,7 @@ const pizzas = [
       "toppings": ["Pepperoni", "Mozzarella Cheese", "Parmesan Cheese", "Cheddar Cheese"],
       "size": "small",
       "price": 10.99,
-      "imageSrc": "/images/defaultPizzaPhoto.jpg"
+      "imageSrc": "/images/PepperoniParadise.jpeg"
   },
   {
       "id": 10,
@@ -372,7 +372,7 @@ const pizzas = [
       "toppings": ["Pepperoni", "Sausage", "Mozzarella Cheese", "Parmesan Cheese"],
       "size": "small",
       "price": 10.99,
-      "imageSrc": "/images/defaultPizzaPhoto.jpg"
+      "imageSrc": "/images/SavoryMeatFeast.jpg"
   },
   {
       "id": 11,
@@ -380,7 +380,7 @@ const pizzas = [
       "toppings": ["Ham", "Mozzarella Cheese", "Parmesan Cheese", "Mushrooms"],
       "size": "small",
       "price": 10.99,
-      "imageSrc": "/images/defaultPizzaPhoto.jpg"
+      "imageSrc": "/images/HamandMushroomMagic.jpg"
   },
   {
       "id": 12,
@@ -388,7 +388,7 @@ const pizzas = [
       "toppings": ["Bacon", "Mozzarella Cheese", "Parmesan Cheese", "Spinach"],
       "size": "small",
       "price": 10.99,
-      "imageSrc": "/images/defaultPizzaPhoto.jpg"
+      "imageSrc": "/images/BaconandSpinachSupreme.jpg"
   },
   {
       "id": 13,
@@ -396,7 +396,7 @@ const pizzas = [
       "toppings": ["Mozzarella Cheese", "Parmesan Cheese", "Cheddar Cheese", "Ricotta Cheese"],
       "size": "small",
       "price": 10.99,
-      "imageSrc": "/images/defaultPizzaPhoto.jpg"
+      "imageSrc": "/images/FourCheeseDelight.jpg"
   },
   {
       "id": 14,
@@ -404,7 +404,7 @@ const pizzas = [
       "toppings": ["Pepperoni", "Mozzarella Cheese", "Parmesan Cheese", "Ricotta Cheese"],
       "size": "small",
       "price": 10.99,
-      "imageSrc": "/images/defaultPizzaPhoto.jpg"
+      "imageSrc": "/images/PepperoniRicottaBliss.jpg"
   },
   {
       "id": 15,
@@ -412,7 +412,7 @@ const pizzas = [
       "toppings": ["Sausage", "Mozzarella Cheese", "Parmesan Cheese", "Red Onions"],
       "size": "small",
       "price": 10.99,
-      "imageSrc": "/images/defaultPizzaPhoto.jpg"
+      "imageSrc": "/images/SausageandOnionSymphony.jpg"
   }
 ];
 
