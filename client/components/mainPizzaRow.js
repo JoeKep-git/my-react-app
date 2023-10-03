@@ -20,9 +20,15 @@ function PizzaRow({ pizza }) {
     const [selectedToppings, setSelectedToppings] = useState([]);
     const [selectedPizza, setSelectedPizza] = useState(null);
     const [selectedSize, setSelectedSize] = useState('small'); // Default value is 'small'
+    const [selectedCrust, setSelectedCrust] = useState('Thin Italian'); // Default value is 'Thin Italian'
 
     const handleSizeChange = (event) => {
         setSelectedSize(event.target.value);
+        console.log(event.target.value);
+    };
+
+    const handleCrustChange = (event) => {
+        setSelectedCrust(event.target.value);
         console.log(event.target.value);
     };
 
@@ -65,7 +71,7 @@ function PizzaRow({ pizza }) {
 
         // Print the result
         console.log("Added to Cart:", cartItem);
-            postPizza(cartItem, selectedSize);
+            postPizza(cartItem, selectedSize, selectedCrust);
         }
     };
     return (
@@ -101,7 +107,7 @@ function PizzaRow({ pizza }) {
                             <option value="large">Large</option>
                         </select><br/>
                         <p className="card-text">Crust:</p>
-                        <select className="form-select" aria-label="selecting size">
+                        <select className="form-select" aria-label="selecting size" onChange={handleCrustChange} value={selectedCrust}>
                             <option value="Thin Italian">Thin Italian</option>
                             <option value="Stone Crust">Stone Crust</option>
                             <option value="Cheese Stuffed Crust">Cheese Stuffed Crust</option>

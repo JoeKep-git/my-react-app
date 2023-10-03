@@ -27,10 +27,11 @@ const Basket = () => {
                     <div className="card">
                         <img src={item.imageSrc} className="card-img-top" ></img>
                         <div className="card-body">
-                        <h5 className="card-title">{item.name}</h5>
-                        <p className="card-text">{item.size}</p>
-                        <p className="card-text">{currencyFormatter.format(item.price)}</p>
-                        <p className="card-text">{item.toppings.join(', ')}</p>
+                        <h5 className="card-title">Name: {item.name}</h5>
+                        <p className="card-text">Size: {item.size}</p>
+                        <p className="card-text">Crust: {item.crust}</p>
+                        <p className="card-text">Price: {currencyFormatter.format(item.price)}</p>
+                        <p className="card-text">Toppings: {item.toppings.join(', ')}</p>
                         </div>
                     </div>
                 </div>
@@ -41,8 +42,8 @@ const Basket = () => {
                     <div className="card">
                         <img src={item.pictureName} className="card-img-top" ></img>
                         <div className="card-body">
-                            <p className="card-text">{item.sideName}</p>
-                            <p className="card-text">{currencyFormatter.format(item.price)}</p>
+                            <p className="card-text">Name: {item.sideName}</p>
+                            <p className="card-text">Price: {currencyFormatter.format(item.price)}</p>
                         </div>
                     </div>
                 </div>
@@ -52,9 +53,9 @@ const Basket = () => {
                     <div className="card">
                     <img src={item.pictureName} className="card-img-top" ></img>
                         <div className="card-body">
-                            <p className="card-title">{item.drinkName}</p>
-                            <p className="card-text">{currencyFormatter.format(item.price)}</p>
-                            <p className="card-text">{item.litre}</p>
+                            <p className="card-title">Name: {item.drinkName}</p>
+                            <p className="card-text">Price: {currencyFormatter.format(item.price)}</p>
+                            <p className="card-text">Litre: {item.litre}</p>
                         </div>
                     </div>
                 </div>

@@ -13,14 +13,20 @@ import postCusomise from "@/hooks/usePostCustomise";
 const PizzaList = () => {
     const {pizzas, setPizzas, loadingState} = usePizzas();
     const [selectedSize, setSelectedSize] = useState('small'); // Default value is 'small'
+    const [selectedCrust, setSelectedCrust] = useState('Thin Italian'); // Default value is 'Thin Italian'
 
     //conditional rendering
     if(loadingState !== loadingStatus.loaded) {
         return <LoadingIndicator loadingState={loadingState} />;
     }
 
-    const handleAddToCart = async (pizza, size) => {
-        const response = await postPizza(pizza, size);
+    const handleAddToCart = async (pizza, size, crust) => {
+        const response = await postPizza(pizza, size, crust);
+    };
+
+    const handleCrustChange = (event) => {
+        setSelectedCrust(event.target.value);
+        console.log(event.target.value);
     };
 
     const handleSizeChange = (event) => {
@@ -55,7 +61,7 @@ const PizzaList = () => {
                                 </select>
                                 <br/>
                                 <p className="card-text">Crust:</p>
-                                <select className="form-select" aria-label="selecting size">
+                                <select className="form-select" aria-label="selecting size" onChange={handleCrustChange} value={selectedCrust}>
                                     <option value="Thin Italian">Thin Italian</option>
                                     <option value="Stone Crust">Stone Crust</option>
                                     <option value="Cheese Stuffed Crust">Cheese Stuffed Crust</option>
@@ -63,7 +69,7 @@ const PizzaList = () => {
                                     <option value="Gluten Free">Gluten Free</option>
                                 </select>
                                 <br/>
-                                <button className="btn btn-primary" onClick={() => handleAddToCart(pizza, selectedSize)}>Add to Cart</button> 
+                                <button className="btn btn-primary" onClick={() => handleAddToCart(pizza, selectedSize, selectedCrust)}>Add to Cart</button> 
                                 <button className="btn btn-primary" onClick={() => handlePizzaClick(pizza)}>Customise</button>
                             </div>
                         </div>

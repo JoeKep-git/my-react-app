@@ -1,6 +1,6 @@
 //usePostPizza.js
 
-const postPizza = async (pizza, size) => {
+const postPizza = async (pizza, size, crust) => {
     try {
     await fetch("/api/pizzas", {
         method: "POST",
@@ -10,7 +10,8 @@ const postPizza = async (pizza, size) => {
         },
         body: JSON.stringify({
             ...pizza,
-            size: size,}),});
+            size: size,
+            crust: crust,}),});
     } catch (err) {
         console.log(err);
     }
