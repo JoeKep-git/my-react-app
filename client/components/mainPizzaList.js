@@ -87,6 +87,7 @@ const PizzaList = () => {
                                 name: "50/50 Pizza",
                                 toppings: [],
                                 price: 20.00,
+                                imageSrc: "/images/5050.jpg"
                             })}>Customise</button>
                         </div>
                     </div>
