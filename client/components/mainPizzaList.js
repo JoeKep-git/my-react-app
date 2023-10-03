@@ -46,10 +46,21 @@ const PizzaList = () => {
                                 <h5 className="card-title">{pizza.name}</h5>
                                 <p className="card-text">Toppings: {pizza.toppings.join(', ')}</p>
                                 <p className="card-text">Price: {currencyFormatter.format(pizza.price)}</p>
+                                <p className="card-text">Size:</p>
                                 <select className="form-select" aria-label="selecting size" onChange={handleSizeChange} value={selectedSize}>
                                     <option value="small">Small</option>
                                     <option value="medium">Medium</option>
                                     <option value="large">Large</option>
+                                    <option value="pizzanormous">Pizzanormous</option>
+                                </select>
+                                <br/>
+                                <p className="card-text">Crust:</p>
+                                <select className="form-select" aria-label="selecting size">
+                                    <option value="Thin Italian">Thin Italian</option>
+                                    <option value="Stone Crust">Stone Crust</option>
+                                    <option value="Cheese Stuffed Crust">Cheese Stuffed Crust</option>
+                                    <option value="Vegan">Vegan</option>
+                                    <option value="Gluten Free">Gluten Free</option>
                                 </select>
                                 <br/>
                                 <button className="btn btn-primary" onClick={() => handleAddToCart(pizza, selectedSize)}>Add to Cart</button> 

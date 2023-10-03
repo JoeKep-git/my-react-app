@@ -94,11 +94,21 @@ function PizzaRow({ pizza }) {
                             </>
                         ))}
                         </div>
+                        <p className="card-text">Size:</p>
                         <select className="form-select" aria-label="selecting size" onChange={handleSizeChange} value={selectedSize}>
                             <option value="small">Small</option>
                             <option value="medium">Medium</option>
                             <option value="large">Large</option>
-                        </select><br/><br/>
+                        </select><br/>
+                        <p className="card-text">Crust:</p>
+                        <select className="form-select" aria-label="selecting size">
+                            <option value="Thin Italian">Thin Italian</option>
+                            <option value="Stone Crust">Stone Crust</option>
+                            <option value="Cheese Stuffed Crust">Cheese Stuffed Crust</option>
+                            <option value="Vegan">Vegan</option>
+                            <option value="Gluten Free">Gluten Free</option>
+                        </select>
+                        <br/><br/>
                         <button
                             ref={addToCartButtonRef}
                             className="btn btn-primary"
