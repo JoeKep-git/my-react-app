@@ -428,7 +428,7 @@ const pizzas = [
       "price": 10.99,
       "imageSrc": "/images/SausageandOnionSymphony.jpg",
       "crust": "Thin Italian"
-  }
+  },
 ];
 
 app.get("/api/pizzas", (req, res) => {

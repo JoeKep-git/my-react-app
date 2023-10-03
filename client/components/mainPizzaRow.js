@@ -22,6 +22,20 @@ function PizzaRow({ pizza }) {
     const [selectedSize, setSelectedSize] = useState('small'); // Default value is 'small'
     const [selectedCrust, setSelectedCrust] = useState('Thin Italian'); // Default value is 'Thin Italian'
 
+    //for customising pizza 50/50
+    const [toppingForHalf1, setToppingForHalf1] = useState(null);
+    const [toppingForHalf2, setToppingForHalf2] = useState(null);
+
+    //set topping for half 1
+    const handleToppingSelectHalf1 = (event) => {
+        setToppingForHalf1(event.target.value);
+    };
+
+    //set topping for half 2
+    const handleToppingSelectHalf2 = (event) => {
+        setToppingForHalf2(event.target.value);
+    };
+
     const handleSizeChange = (event) => {
         setSelectedSize(event.target.value);
         console.log(event.target.value);
@@ -60,11 +74,24 @@ function PizzaRow({ pizza }) {
 
         // Gather pizza name
         const pizzaName = selectedPizza.name;
-
+        let toppingsArray = [];
+        if (pizzaName === "50/50 Pizza") {
+            if (toppingForHalf1 && toppingForHalf2) {
+                toppingsArray = [toppingForHalf1, toppingForHalf2];
+                console.log(toppingsArray);
+            } else {
+                // Handle case where toppings are not selected for both halves
+                console.error("Please select toppings for both halves.");
+                return;
+            }
+        } else {
+            // Handle other pizzas
+            toppingsArray = selectedToppingsArray;
+        }
         // Combine them into a variable
         const cartItem = {
             name: pizzaName,
-            toppings: selectedToppingsArray,
+            toppings: toppingsArray,
             price: selectedPizza.price,
             imageSrc: selectedPizza.imageSrc,
         };
@@ -89,16 +116,48 @@ function PizzaRow({ pizza }) {
                         <div className="card-text">
                         {toppings.map((topping) => (
                             <>
-                            <button
-                                    className={`btn ${customise.toppings.includes(topping.ToppingName) ? 'btn-success' : 'btn-primary'}`}
-                                    onClick={() => {handleToppingClick(topping.ToppingName)}}
-                                >
-                                {topping.ToppingName}
-                                {topping.IsVegan ? "| Vegan ✅ | " : null}
-                                {topping.IsGlutenFree ? "Gluten-free ✅" : null}
-                                </button><br/><br/>
+                            {customise.name !== "50/50 Pizza" && (
+                                <>
+                                    <button
+                                        className={`btn ${customise.toppings.includes(topping.ToppingName) ? 'btn-success' : 'btn-primary'}`}
+                                        onClick={() => {handleToppingClick(topping.ToppingName)}}
+                                    >
+                                    {topping.ToppingName}
+                                    {topping.IsVegan ? "| Vegan ✅ | " : null}
+                                    {topping.IsGlutenFree ? "Gluten-free ✅" : null}
+                                    </button><br/><br/>
+                                </>
+                            )}
+                            
                             </>
                         ))}
+
+                        {customise.name === "50/50 Pizza" && (
+                                <>
+                                    <p className="card-text">Toppings for Half 1:</p>
+                                    <select className="form-select" aria-label="selecting topping" onChange={handleToppingSelectHalf1} value={toppingForHalf1}>
+                                        <option value="">Select Topping</option>
+                                        {toppings.map((topping) => (
+                                            <option key={topping.ToppingName} value={topping.ToppingName}>
+                                                {topping.ToppingName}
+                                            </option>
+                                        ))}
+                                    </select>
+                                    <br/>
+                                    <p className="card-text">Toppings for Half 2:</p>
+                                    <select className="form-select" aria-label="selecting topping" onChange={handleToppingSelectHalf2} value={toppingForHalf2}>
+                                        <option value="">Select Topping</option>
+                                        {toppings.map((topping) => (
+                                            <option key={topping.ToppingName} value={topping.ToppingName}>
+                                                {topping.ToppingName}
+                                            </option>
+                                        ))}
+                                    </select>
+                                    <br/>
+                                </>
+                            )}
+
+
                         </div>
                         <p className="card-text">Size:</p>
                         <select className="form-select" aria-label="selecting size" onChange={handleSizeChange} value={selectedSize}>

@@ -14,6 +14,7 @@ const PizzaList = () => {
     const {pizzas, setPizzas, loadingState} = usePizzas();
     const [selectedSize, setSelectedSize] = useState('small'); // Default value is 'small'
     const [selectedCrust, setSelectedCrust] = useState('Thin Italian'); // Default value is 'Thin Italian'
+    const [pizza5050, setPizza5050] = useState(null);
 
     //conditional rendering
     if(loadingState !== loadingStatus.loaded) {
@@ -75,6 +76,21 @@ const PizzaList = () => {
                         </div>
                     </div> 
                 ))}
+                <div className="col">
+                    <div className="card">
+                        <img src={"/images/5050.jpg"} className="card-img-top" alt="5050"/>
+                        <div className="card-body">
+                            <h5 className="card-title">50/50 Pizza</h5>
+                            <p className="card-text">Toppings: </p>
+                            <p className="card-text">Price: £20.00</p>
+                            <button className="btn btn-primary" onClick={() => handlePizzaClick({
+                                name: "50/50 Pizza",
+                                toppings: [],
+                                price: 20.00,
+                            })}>Customise</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </>
     );
