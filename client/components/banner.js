@@ -22,7 +22,7 @@ const Banner = ({children}) => {
                 className={styles.logo}
                 onClick={() => navigate(navValues.pizza)}
                 />
-                <p className="p-3 mb-2 bg-white text-dark">Pizzalicious</p>
+                <p className="p-3 mb-2 text-white">Pizzalicious</p>
             </div>
             
             <ul className="nav justify-content-end col-7 mt-5">

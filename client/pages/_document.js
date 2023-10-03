@@ -9,7 +9,7 @@ export default function Document() {
                 rel="stylesheet" 
             />
             <link rel="stylesheet" href="../styles/globals.css" />
-            <body>
+            <body className="p-3 mb-2 bg-dark text-white">
                 <div className="container">
                     <Main />
                 </div>
